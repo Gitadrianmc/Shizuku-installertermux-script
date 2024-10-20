@@ -1,0 +1,131 @@
+To create a GitHub repository and include the script, you'll follow these steps:
+
+Step 1: Create a New GitHub Repository
+
+1. Go to GitHub and log in to your account.
+
+
+2. Click the New button or navigate to Repositories > New to create a new repository.
+
+
+3. Name your repository (e.g., shizuku-termux-installer).
+
+
+4. Optionally, add a description, set the repository to public or private, and choose to add a README if desired.
+
+
+5. Click Create Repository.
+
+
+
+Step 2: Clone the Repository to Your Local Machine (optional)
+
+If you want to clone the repository to your local machine, open a terminal (or Termux on Android) and run the following commands:
+
+git clone https://github.com/your-username/shizuku-termux-installer.git
+cd shizuku-termux-installer
+
+Step 3: Add the Script to GitHub
+
+Option 1: Using the GitHub Website
+
+1. Inside your new repository, click Add file > Create new file.
+
+
+2. Name the file something like install_shizuku_termux.sh.
+
+
+3. Paste the script content into the editor:
+
+
+
+#!/bin/bash
+# Ensure Shizuku is running and permissions are granted
+adb shell shizuku ps
+
+# Install APK using adb (via Shizuku)
+APK_PATH="/storage/emulated/0/Download/your_app.apk"
+
+if [[ -f "$APK_PATH" ]]; then
+    echo "Installing $APK_PATH..."
+    adb install "$APK_PATH" || echo "Installation failed."
+else
+    echo "APK not found at $APK_PATH"
+fi
+
+4. Scroll down and click Commit new file to save it.
+
+
+
+Option 2: Using the Terminal (Git)
+
+If you're working locally and have cloned the repository, navigate to the repository folder, create the script, and push it to GitHub:
+
+1. Create the script file:
+
+nano install_shizuku_termux.sh
+
+
+2. Paste the script content into the file, then save and exit.
+
+
+3. Add the file to your repository:
+
+git add install_shizuku_termux.sh
+
+
+4. Commit your changes:
+
+git commit -m "Add Shizuku + Termux Installer script"
+
+
+5. Push the changes to GitHub:
+
+git push origin main
+
+
+
+Step 4: Document Your Repository
+
+1. Edit the README file or create one (README.md) in the repository to explain the purpose of the repository and provide instructions for running the script.
+
+
+
+Example README content:
+
+# Shizuku + Termux Installer Script
+
+This repository contains a script to integrate **Shizuku** with **Termux** to perform elevated installations and other tasks without root access.
+
+## How to Use
+
+1. Install the **Shizuku** app from the [Google Play Store](https://play.google.com/store/apps/details?id=moe.shizuku.privileged.api).
+2. Follow the setup instructions within Shizuku to start its service.
+3. Clone this repository to your local machine or Android device (with Termux installed).
+   ```bash
+   git clone https://github.com/your-username/shizuku-termux-installer.git
+
+4. Navigate to the directory and make the script executable:
+
+cd shizuku-termux-installer
+chmod +x install_shizuku_termux.sh
+
+
+5. Run the script to install APKs or manage permissions using Shizuku:
+
+./install_shizuku_termux.sh
+
+
+
+Notes
+
+Ensure that Shizuku is running before executing the script.
+
+Modify the script to point to the correct APK path for your application.
+
+
+### Step 5: Share the Repository
+Once your script and documentation are in place, share the link to your GitHub repository with others or use it yourself.
+
+Let me know if you need more assistance with this process!
+
